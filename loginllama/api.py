@@ -27,7 +27,9 @@ class Api:
         self.base_url = url
 
     def get(self, url: str) -> Any:
-        response = requests.get(f"{self.base_url}{url}", headers=self.headers, timeout=5)
+        response = requests.get(
+            f"{self.base_url}{url}", headers=self.headers, timeout=5
+        )
         response.raise_for_status()
         return response.json()
 

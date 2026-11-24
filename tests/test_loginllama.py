@@ -93,11 +93,11 @@ def test_extracts_ip_and_user_agent_from_request(monkeypatch):
 
     def fake_post(self, url, params):
         return {
-          "status": "success",
-          "message": "Valid login",
-          "codes": ["login_valid"],
-          "risk_score": 1,
-          "environment": "production",
+            "status": "success",
+            "message": "Valid login",
+            "codes": ["login_valid"],
+            "risk_score": 1,
+            "environment": "production",
         }
 
     monkeypatch.setattr(Api, "post", fake_post)

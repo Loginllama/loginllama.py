@@ -1,5 +1,6 @@
 from contextvars import ContextVar
-from typing import Optional, Any, Literal
+from typing import Any, Literal, Optional
+
 from .ip_extractor import IPExtractor
 
 # Thread-safe context storage

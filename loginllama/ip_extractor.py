@@ -1,5 +1,5 @@
 import re
-from typing import Optional, Any
+from typing import Any, Optional
 
 PRIVATE_IP_RANGES = [
     re.compile(r"^10\."),

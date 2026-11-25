@@ -24,12 +24,25 @@ jobs:
         uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
         with:
           python-version: "3.12"
+          enable-cache: true
 
       - name: Install dependencies
         run: uv venv && uv sync --extra dev
 
+      - name: Lint
+        run: uv run ruff check .
+
+      - name: Check formatting
+        run: uv run ruff format --check .
+
       - name: Run test suite
         run: uv run pytest
+
+      - name: Coverage summary
+        if: always()
+        run: |
+          uv run coverage report --format=markdown >> "$GITHUB_STEP_SUMMARY"
+          uv run coverage report | tail -n 1
 
   release-please:
     needs: test

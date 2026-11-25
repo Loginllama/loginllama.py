@@ -205,12 +205,14 @@ class LoginLlama:
         # Validation
         if not final_ip:
             raise ValueError(
-                "ip_address could not be detected. Pass ip_address= or request= explicitly, "
+                "ip_address could not be detected. "
+                "Pass ip_address= or request= explicitly, "
                 "or use the middleware() function."
             )
         if not final_ua:
             raise ValueError(
-                "user_agent could not be detected. Pass user_agent= or request= explicitly, "
+                "user_agent could not be detected. "
+                "Pass user_agent= or request= explicitly, "
                 "or use the middleware() function."
             )
 
@@ -326,7 +328,8 @@ class LoginLlama:
         """
         Report a failed authentication attempt
 
-        Use this when the user's credentials are invalid (wrong password, MFA failed, etc.).
+        Use this when the user's credentials are invalid (wrong password,
+        MFA failed, etc.).
         This helps LoginLlama detect brute force and credential stuffing attacks.
 
         Args:
@@ -433,6 +436,8 @@ class LoginLlama:
 
         # Flask/FastAPI
         if hasattr(request, "headers"):
-            return request.headers.get("User-Agent") or request.headers.get("user-agent")
+            return request.headers.get("User-Agent") or request.headers.get(
+                "user-agent"
+            )
 
         return None
